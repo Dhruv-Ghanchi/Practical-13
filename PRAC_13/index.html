@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects Example</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+            overflow-y: scroll;  /* Allow scrolling */
+        }
+
+        /* Heading text animation (typing effect) */
+        h1 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            animation: typing 3s steps(30) 1s 1 normal both;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* Typing effect animation */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #16a085;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        h2:hover {
+            color: #1abc9c;
+            transform: translateY(-5px);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #ecf0f1;
+        }
+
+        /* Output container styles */
+        #output {
+            width: 90%;
+            max-width: 1000px;
+            padding: 40px;
+            border-radius: 20px;
+            background: #fff;
+            color: #333;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        /* Fade-In animation */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Styled Box for each object section */
+        .section {
+            background-color: #ffffff;
+            border-left: 8px solid #16a085;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        /* Slide-In animation */
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .output-text {
+            font-size: 1.2rem;
+            color: #333;
+            padding-left: 15px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Hover effects for sections */
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button styling */
+        button {
+            padding: 15px 30px;
+            background-color: #16a085;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 40px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #1abc9c;
+            transform: translateY(-5px);
+        }
+
+        /* Link styling */
+        a {
+            color: #16a085;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #1abc9c;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript Object Examples</h1>
+    
+    <div id="output"></div>
+
+    <script>
+        // 1. Plain Object
+        let person = {
+            name: "John",
+            age: 30,
+            greet: function() {
+                return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+            }
+        };
+
+        // 2. Array (Array is also an object in JavaScript)
+        let fruits = ["Apple", "Banana", "Cherry"];
+        fruits.push("Orange");
+
+        // 3. Date Object
+        let today = new Date();
+        let currentDate = today.toLocaleDateString();
+
+        // 4. Function Object (Functions are also objects in JavaScript)
+        function sayGoodbye() {
+            return "Goodbye!";
+        }
+
+        // 5. Built-in Object (Math Object)
+        let pi = Math.PI;
+        let randomNum = Math.random();
+
+        // 6. Instance of a custom object (using a constructor function)
+        function Car(make, model, year) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+            this.displayInfo = function() {
+                return `${this.year} ${this.make} ${this.model}`;
+            };
+        }
+
+        let myCar = new Car("Toyota", "Corolla", 2021);
+
+        // 7. Map Object (Collection of key-value pairs)
+        let employee = new Map();
+        employee.set("name", "Alice");
+        employee.set("position", "Engineer");
+        employee.set("age", 28);
+
+        // 8. Set Object (Collection of unique values)
+        let uniqueNumbers = new Set([1, 2, 3, 4, 4, 5]);
+
+        // Output the results of different object usages
+        let output = `
+            <div class="section">
+                <h2>Plain Object:</h2>
+                <p class="output-text">${person.greet()}</p>
+            </div>
+
+            <div class="section">
+                <h2>Array Object:</h2>
+                <p class="output-text">${fruits.join(", ")}</p>
+            </div>
+
+            <div class="section">
+                <h2>Date Object:</h2>
+                <p class="output-text">Current Date: ${currentDate}</p>
+            </div>
+
+            <div class="section">
+                <h2>Function Object:</h2>
+                <p class="output-text">${sayGoodbye()}</p>
+            </div>
+
+            <div class="section">
+                <h2>Built-in Math Object:</h2>
+                <p class="output-text">Value of PI: ${pi}</p>
+                <p class="output-text">Random Number: ${randomNum}</p>
+            </div>
+
+            <div class="section">
+                <h2>Custom Object (Car):</h2>
+                <p class="output-text">${myCar.displayInfo()}</p>
+            </div>
+
+            <div class="section">
+                <h2>Map Object:</h2>
+                <p class="output-text">Employee Name: ${employee.get("name")}</p>
+            </div>
+
+            <div class="section">
+                <h2>Set Object:</h2>
+                <p class="output-text">${Array.from(uniqueNumbers).join(", ")}</p>
+            </div>
+        `;
+
+        // Display the output in the HTML page
+        document.getElementById("output").innerHTML = output;
+    </script>
+</body>
+</html>
